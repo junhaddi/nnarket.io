@@ -15,7 +15,15 @@ const game = new Phaser.Game(config);
 
 function preload() {}
 
-function create() {}
+function create() {
+  io.on('connection', socket => {
+    console.log('a player connected');
+
+    socket.on('disconnect', () => {
+      console.log('player disconnected');
+    });
+  });
+}
 
 function update() {}
 
